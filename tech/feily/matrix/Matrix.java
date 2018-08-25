@@ -125,11 +125,7 @@ public class Matrix {
     public static double[] getRowValue(double[][] array, int haveArray1RowIndex){
         double[] row = new double[array[0].length];
         for (int i = 0; i < row.length; i++) {
-            if (haveArray1RowIndex < row.length) {
-                row[i] = array[haveArray1RowIndex][i];
-            } else {
-                break;
-            }
+            row[i] = array[haveArray1RowIndex][i];
         }
         return row;
     }
@@ -145,11 +141,7 @@ public class Matrix {
     public static double[] getColValue(double[][] array, int haveArray2ColIndex) {
         double[] col = new double[array.length];
         for (int i = 0; i < col.length; i++) {
-            if (haveArray2ColIndex < col.length) {
-                col[i] = array[i][haveArray2ColIndex];
-            } else {
-                break;
-            }
+            col[i] = array[i][haveArray2ColIndex];
         }
         return col;
     }
