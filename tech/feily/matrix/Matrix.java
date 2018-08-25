@@ -123,7 +123,7 @@ public class Matrix {
      * @since 1.0.0
      */
     public static double[] getRowValue(double[][] array, int haveArray1RowIndex){
-        double[] row = new double[array[0].length];    //行row记录行的每个数，长度为一维数组的长度
+        double[] row = new double[array[0].length];
         for (int i = 0; i < row.length; i++) {
             if (haveArray1RowIndex < row.length) {
                 row[i] = array[haveArray1RowIndex][i];
