@@ -25,11 +25,11 @@ public class Matrix {
         if (array1[0].length == array2.length) {
             double[] row, col;
             for (int a = 0; a < array1.length; a++) {
-                row = getRowValue(array1, a);
+                row = getRowValue(array1, a);   //The loop gets the value of a row.
                 for (int j = 0; j < result.length; j++) {
-                    col = getColValue(array2, j);
+                    col = getColValue(array2, j);   //The loop gets the value of a column.
                     for (int i = 0; i < row.length; i++) {
-                        result[a][j] += row[i] * col[i];
+                        result[a][j] += row[i] * col[i];    //Traverses rows and columns and multiplies the results.
                     }
                 }
             }
