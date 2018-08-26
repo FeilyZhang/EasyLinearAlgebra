@@ -113,7 +113,135 @@ public class Matrix {
         returnValue.setFormatResult(formatResult(array));
         return returnValue;
     }
+        
+    /*
+     * Transpose the matrix.
+     * 
+     * @param array Matrix that needs to be transposed.
+     * @return The return value is the JavaBean class that contains the final result array.
+     * @since 1.0.1
+     */
+    public static ReturnValue transpose(double[][] array) {
+        int rowIndex, colIndex;
+        double rowValue, colValue;
+        int rowFlag = 0, colFlag = 0, index = -1;
+        ReturnValue returnValue = new ReturnValue();
+        if (array.length == array[0].length) {
+            while(true) {
+                if (index == array.length - 1) {
+                    break;
+                } else {
+                    ++index;
+                    ++rowFlag;
+                    ++colFlag;
+                    rowIndex = rowFlag;
+                    colIndex = colFlag;
+                    while(true) {    //每次循环交换index行列
+                        if (rowIndex != array.length && colIndex != array.length) {
+                            rowValue = array[index][rowIndex];    //获取行值
+                            colValue = array[colIndex][index];    //获取列值
+                            array[index][rowIndex] = colValue;
+                            array[colIndex][index] = rowValue;    //交换行与列
+                            ++rowIndex;
+                            ++colIndex;
+                        } else break;
+                    }
+                }
+            }
+            returnValue.setCode(200);
+        } else {
+            returnValue.setCode(500);
+        }
+        returnValue.setResult(array);
+        returnValue.setFormatResult(formatResult(array));
+        return returnValue;
+    }
     
+    /*
+     * Create digital matrix.
+     * 
+     * @param number.
+     * @param row
+     * @param col
+     * @return The return value is the JavaBean class that contains the final result array.
+     * @since 1.0.1
+     */
+    public static ReturnValue createNumMatrix(int number, int row, int col) {
+        ReturnValue returnValue = new ReturnValue();
+        double[][] result = new double[row][col];
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                result[i][j] = number;
+            }
+        }
+        returnValue.setCode(200);
+        returnValue.setResult(result);
+        returnValue.setFormatResult(formatResult(result));
+        return returnValue;
+    }
+    
+    /*
+     * Create unit matrix.
+     * 
+     * @param steps
+     * @return The return value is the JavaBean class that contains the final result array.
+     * @since 1.0.1
+     */
+    public static ReturnValue createUnitMatrix(int steps) {
+        ReturnValue returnValue = new ReturnValue();
+        double[][] result = new double[steps][steps];
+        for (int i = 0; i < steps; i++) {
+            result[i][i] = 1;
+        }
+        returnValue.setCode(200);
+        returnValue.setResult(result);
+        returnValue.setFormatResult(formatResult(result));
+        return returnValue;
+    }
+    
+    /*
+     * Create random matrix.
+     * 
+     * @param row
+     * @param col
+     * @param bit
+     * @param values
+     * @return The return value is the JavaBean class that contains the final result array.
+     * @since 1.0.1
+     */
+    public static ReturnValue createRandomMatrix(int row, int col, int bit, double... values) {
+        ReturnValue returnValue = new ReturnValue();
+        double[][] result = new double[row][col];
+        double temp = 0;
+        if (values.length == 0) {
+            for (int i = 0; i < row; i++) {
+                for (int j = 0; j < col; j++) {
+                    result[i][j] = Math.random() * bit;
+                }
+            }
+            returnValue.setCode(200);
+        } else if (values.length == 2 && values[0] < values[1]) {
+            for (int i = 0; i < row; i++) {
+                for (int j = 0; j < col; j++) {
+                    temp = Math.random() * bit;
+                    while(true) {
+                        if (values[0] < temp && temp < values[1]) {
+                            result[i][j] = temp;
+                            break;
+                        } else {
+                            temp = Math.random() * bit;
+                        }
+                    }
+                }
+            }
+            returnValue.setCode(200);
+        } else {
+            returnValue.setCode(500);
+        }
+        returnValue.setResult(result);
+        returnValue.setFormatResult(formatResult(result));
+        return returnValue; 
+    }
     /*
      * The row of the first matrix is obtained in matrix multiplication.
      * 
