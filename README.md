@@ -82,4 +82,39 @@ After transpose:
 |3.985996025777523 0.6198192696201366 3.9810023187252206 5.218849247745672 4.458796385590409|
 ```
 
+# Version updating, Reduced floating-point numbers(August 2018 30)
+```
+package tech.feily.matrix;
+
+/*
+ * @author Feily Zhang
+ */
+public class Example {
+
+    public static void main(String[] args) {
+        ReturnValue returnValue = Matrix.createRandomMatrix(5, 5, 10, 2);
+        System.out.println("Before transpose:\n" + returnValue.getFormatResult());
+        ReturnValue returnValue1 = Matrix.transpose(returnValue.getResult());
+        System.out.println("After transpose:\n" + returnValue1.getFormatResult());
+    }
+
+}
+```
+The result of operation is
+```
+Before transpose:
+|7.4 5.03 0.39 4.31 5.26|
+|2.0 8.19 4.49 5.76 7.53|
+|4.49 4.29 1.78 2.16 3.75|
+|1.91 5.48 0.38 2.57 1.0|
+|7.02 4.57 2.95 1.3 1.9|
+
+After transpose:
+|7.4 2.0 4.49 1.91 7.02|
+|5.03 8.19 4.29 5.48 4.57|
+|0.39 4.49 1.78 0.38 2.95|
+|4.31 5.76 2.16 2.57 1.3|
+|5.26 7.53 3.75 1.0 1.9|
+```
+
 to be continued......
