@@ -205,6 +205,7 @@ public class Matrix {
      * @param row
      * @param col
      * @param bit
+     * @param bits
      * @param values
      * @return The return value is the JavaBean class that contains the final result array.
      * @since 1.0.1
