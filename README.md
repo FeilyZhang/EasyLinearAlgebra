@@ -1,4 +1,4 @@
-# EasyLinearAlgebra
+# EasyMatrix
 Basic operation software package for linear algebra.
 
 # Using method
