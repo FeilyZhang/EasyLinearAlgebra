@@ -209,7 +209,7 @@ public class Matrix {
      * @return The return value is the JavaBean class that contains the final result array.
      * @since 1.0.1
      */
-    public static ReturnValue createRandomMatrix(int row, int col, int bit, double... values) {
+    public static ReturnValue createRandomMatrix(int row, int col, int bit, int bits, double... values) {
         ReturnValue returnValue = new ReturnValue();
         double[][] result = new double[row][col];
         double temp = 0;
@@ -238,6 +238,7 @@ public class Matrix {
         } else {
             returnValue.setCode(500);
         }
+        result = format(result, bits);
         returnValue.setResult(result);
         returnValue.setFormatResult(formatResult(result));
         return returnValue; 
@@ -295,6 +296,26 @@ public class Matrix {
             }
         }
         return stringBuffer;
+    }
+
+    /*
+     * Reduced floating-point numbers.
+     * 
+     * @param array Need to be streamlined floating-point array.
+     * @param number
+     * @return Returns the matrix after formatting.
+     * @since 1.0.2
+     */
+    public static double[][] format(double[][] array, int number) {
+        String first, second;
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                first = String.valueOf(array[i][j]).split("\\.")[0];
+                second = String.valueOf(array[i][j]).split("\\.")[1].substring(0, number);
+                array[i][j] = Double.parseDouble(first + '.' + second);
+            }
+        }
+        return array;
     }
     
 }
