@@ -117,4 +117,23 @@ After transpose:
 |5.26 7.53 3.75 1.0 1.9|
 ```
 
+# Version updating, Reduced floating-point numbers(Sep 2018 7)
+```
+package tech.feily.matrix;
+
+/*
+ * @author Feily Zhang
+ */
+public class Example {
+
+    public static void main(String[] args) {
+        System.out.println(Matrix.getReverseOrderNumber("6745312"));
+    }
+
+}
+```
+Result is 
+```
+18
+```
 to be continued......
