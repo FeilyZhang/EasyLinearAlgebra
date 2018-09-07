@@ -244,6 +244,33 @@ public class Matrix {
         returnValue.setFormatResult(formatResult(result));
         return returnValue; 
     }
+    
+    /*
+     * The method get reverseOrderNumber.
+     * 
+     * @param permutation.
+     * @return Return the reverseOrderNumber.
+     * @since 1.0.3
+     */
+    public static int getReverseOrderNumber(String permutation) {
+        int number = 0, len = permutation.toCharArray().length;
+        int[] intArray = new int[len];
+        char[] charArray = permutation.toCharArray();
+        for (int i = 0; i < len; i++) {
+            intArray[i] = (int)charArray[i];
+            
+        }
+        for (int j = 0; j < len - 1; j++) {
+            int nowNumber = intArray[j];
+            for (int k = j + 1; k < len; k++) {
+                if (nowNumber > intArray[k]) {
+                    ++number;
+                }
+            }
+        }
+        return number;
+    }
+    
     /*
      * The row of the first matrix is obtained in matrix multiplication.
      * 
@@ -315,6 +342,22 @@ public class Matrix {
                 second = String.valueOf(array[i][j]).split("\\.")[1].substring(0, number);
                 array[i][j] = Double.parseDouble(first + '.' + second);
             }
+        }
+        return array;
+    }
+
+    /*
+     * The method get continuousIntegerArray.
+     * 
+     * @param begin.
+     * @param end.
+     * @return Return the continuousIntegerArray.
+     * @since 1.0.3
+     */
+    public static int[] getContinuousIntegerArray(int begin, int end) {
+        int[] array = new int[end - begin];
+        for (int i = 0,j = begin; j < end; i++,j++) {
+            array[i] = j;
         }
         return array;
     }
